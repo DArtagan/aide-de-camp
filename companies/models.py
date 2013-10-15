@@ -5,6 +5,9 @@ class Company(models.Model):
     location = models.CharField(max_length=50)
     notes = models.TextField()
 
+    def __unicode__(self):
+        return self.name
+
 class Contact(models.Model):
     company = models.ManyToManyField(Company)
     name = models.CharField(max_length=50)
@@ -13,6 +16,9 @@ class Contact(models.Model):
     phone = models.CharField(max_length=20)
     notes = models.TextField()
 
+    def __unicode__(self):
+        return self.name
+
 class Position(models.Model):
     company = models.ForeignKey(Company)
     name = models.CharField(max_length=100)
@@ -20,3 +26,6 @@ class Position(models.Model):
     start_date = models.DateField()
     date_noted = models.DateField(auto_now_add=True)
     notes = models.TextField()
+
+    def __unicode__(self):
+        return self.name
