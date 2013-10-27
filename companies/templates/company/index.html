@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block title %}
+Companies
+{% endblock %}
+
+{% block content %}
+<ul>
+  {% for object in object_list %}
+    <li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
+  {% empty %}
+    <li>Sorry, no companies found.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

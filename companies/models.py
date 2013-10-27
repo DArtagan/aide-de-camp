@@ -1,9 +1,13 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 class Company(models.Model):
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=50)
     notes = models.TextField()
+
+    def get_absolute_url(self):
+        return reverse('company:company_detail', args=[self.pk])
 
     def __unicode__(self):
         return self.name
