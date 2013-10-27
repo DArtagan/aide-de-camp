@@ -11,7 +11,7 @@ Companies
   {% for object in object_list %}
     <li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
   {% empty %}
-    <li>Sorry, no companies found.</li>
+  <li>Looks like there aren't any companies yet, <a href="{% url 'company:company_create' %}">create one</a>?</li>
   {% endfor %}
 </ul>
 {% endblock %}
