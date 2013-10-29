@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block title %}
+Positions
+{% endblock %}
+
+{% block content %}
+<ul>
+  {% for object in object_list %}
+    <li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
+  {% empty %}
+  <li>Looks like there aren't any positions yet, <a href="{% url 'company:position:position_create' %}">create one</a>?</li>
+  {% endfor %}
+</ul>
+{% endblock %}

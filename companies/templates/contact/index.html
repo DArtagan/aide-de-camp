@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block title %}
+Contacts
+{% endblock %}
+
+{% block content %}
+<ul>
+  {% for object in object_list %}
+    <li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
+  {% empty %}
+  <li>Looks like there aren't any contacts yet, <a href="{% url 'company:contact:contact_create' %}">create one</a>?</li>
+  {% endfor %}
+</ul>
+{% endblock %}

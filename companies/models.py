@@ -20,6 +20,9 @@ class Contact(models.Model):
     phone = models.CharField(max_length=20)
     notes = models.TextField()
 
+    def get_absolute_url(self):
+        return reverse('Contact:contact_detail', args=[self.pk])
+
     def __unicode__(self):
         return self.name
 
@@ -30,6 +33,9 @@ class Position(models.Model):
     start_date = models.DateField()
     date_noted = models.DateField(auto_now_add=True)
     notes = models.TextField()
+
+    def get_absolute_url(self):
+        return reverse('Position:position_detail', args=[self.pk])
 
     def __unicode__(self):
         return self.name

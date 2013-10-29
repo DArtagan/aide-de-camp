@@ -28,5 +28,53 @@ class CompanyCreate(CompanyMixin, CreateView):
 class CompanyUpdate(CompanyMixin, UpdateView):
     template_name = 'company/form.html'
 
-class ComputerDelete(CompanyMixin, DeleteView):
+class CompanyDelete(CompanyMixin, DeleteView):
     pass
+
+# Contact
+class ContactMixin(object):
+    model = Contact
+    def get_success_url(self):
+        return reverse_lazy('contact:contact_index')
+    def get_queryset(self):
+        return Contact.objects.all()
+
+class ContactIndex(ContactMixin, ListView):
+    template_name = 'contact/index.html'
+
+class ContactDetain(ContactMixin, DetailView):
+    template_name = 'contact/detail.html'
+
+class ContactCreate(ContactMixin, CreateView):
+    template_name = 'contact/form.html'
+
+class ContactUpdate(ContactMixin, UpdateView):
+    template_name = 'contact/form.html'
+
+class ContactDelete(ContactMixin, DeleteView):
+    pass
+
+# Position
+class PositionMixin(object):
+    model = Position
+    def get_success_url(self):
+        return reverse_lazy('position:position_index')
+    def get_queryset(self):
+        return Position.objects.all()
+
+class PositionIndex(PositionMixin, ListView):
+    template_name = 'position/index.html'
+
+class PositionDetain(PositionMixin, DetailView):
+    template_name = 'position/detail.html'
+
+class PositionCreate(PositionMixin, CreateView):
+    template_name = 'position/form.html'
+
+class PositionUpdate(PositionMixin, UpdateView):
+    template_name = 'position/form.html'
+
+class PositionDelete(PositionMixin, DeleteView):
+    pass
+
+
