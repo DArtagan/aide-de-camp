@@ -21,7 +21,7 @@ class Contact(models.Model):
     notes = models.TextField(blank=True)
 
     def get_absolute_url(self):
-        return reverse('Contact:contact_detail', args=[self.pk])
+        return reverse('company:contact:contact_detail', args=[self.pk])
 
     def __unicode__(self):
         return self.name
@@ -37,7 +37,7 @@ class Position(models.Model):
     notes = models.TextField(blank=True)
 
     def get_absolute_url(self):
-        return reverse('Position:position_detail', args=[self.pk])
+        return reverse('company:position:position_detail', args=[self.pk])
 
     def __unicode__(self):
         return self.name

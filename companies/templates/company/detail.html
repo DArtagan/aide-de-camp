@@ -5,10 +5,20 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{ object.name }}</h1>
 <p>{{ object.location }}</p>
 {% if object.notes %}
 <h2>Notes</h2>
-<p>{{ object.notes }}</p>
+<p>{{ object.notes|linebreaks }}</p>
+{% endif %}
+{% if object.contact_set.all %}
+<h3>Contacts</h3>
+{% endif %}
+{% if object.position_set.all %}
+<h3>Positions</h3>
+<ul>
+{% for position in object.position_set.all %}
+<li><a href="{{ position.get_absolute_url }}">{{ position }}</a></li>
+{% endfor %}
+</ul>
 {% endif %}
 {% endblock %}

@@ -9,6 +9,6 @@
 <p>{{ object.location }}</p>
 {% if object.notes %}
 <h2>Notes</h2>
-<p>{{ object.notes }}</p>
+<p>{{ object.notes|linebreaks }}</p>
 {% endif %}
 {% endblock %}

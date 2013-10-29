@@ -19,7 +19,7 @@ class CompanyMixin(object):
 class CompanyIndex(CompanyMixin, ListView):
     template_name = 'company/index.html'
 
-class CompanyDetain(CompanyMixin, DetailView):
+class CompanyDetail(CompanyMixin, DetailView):
     template_name = 'company/detail.html'
 
 class CompanyCreate(CompanyMixin, CreateView):
@@ -42,7 +42,7 @@ class ContactMixin(object):
 class ContactIndex(ContactMixin, ListView):
     template_name = 'contact/index.html'
 
-class ContactDetain(ContactMixin, DetailView):
+class ContactDetail(ContactMixin, DetailView):
     template_name = 'contact/detail.html'
 
 class ContactCreate(ContactMixin, CreateView):
@@ -65,7 +65,7 @@ class PositionMixin(object):
 class PositionIndex(PositionMixin, ListView):
     template_name = 'position/index.html'
 
-class PositionDetain(PositionMixin, DetailView):
+class PositionDetail(PositionMixin, DetailView):
     template_name = 'position/detail.html'
 
 class PositionCreate(PositionMixin, CreateView):
