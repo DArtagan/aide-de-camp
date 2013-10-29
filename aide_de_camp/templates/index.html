@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+<html>
+  <head>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+  </head>
+  <body>
+    <div class="col-md-8 col-md-offset-2">
+      <h1>Aide-De-Camp</h1>
+      <p>- Assisting in the campaign to find a job.</p>
+      <ul>
+        <li><a href="{% url 'company:company_index' %}">Companies</a></li>
+        <li><a href="{% url 'company:contact:contact_index' %}">Contacts</a></li>
+        <li><a href="{% url 'company:position:position_index' %}">Positions</a></li>
+    </div>
+  </body>
+</html>
