@@ -14,6 +14,11 @@
 {% endif %}
 {% if object.contact_set.all %}
 <h3>Contacts</h3>
+<ul>
+{% for contact in object.contact_set.all %}
+<li><a href="{{ contact.get_absolute_url }}">{{ contact }}</a></li>
+{% endfor %}
+</ul>
 {% endif %}
 {% if object.position_set.all %}
 <h3>Positions</h3>

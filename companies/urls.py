@@ -26,5 +26,7 @@ urlpatterns = patterns('',
     url(r'^$', CompanyIndex.as_view(), name='company_index'),
     url(r'^create/$', CompanyCreate.as_view(), name='company_create'),
     url(r'^(?P<pk>\d+)/$', CompanyDetail.as_view(), name='company_detail'),
+    url(r'^(?P<pk>\d+)/update/$', CompanyUpdate.as_view(), name='company_update'),
+    url(r'^(?P<pk>\d+)/delete/$', CompanyDelete.as_view(), name='company_delete'),
 )
 
