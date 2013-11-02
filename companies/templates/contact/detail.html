@@ -4,6 +4,18 @@
 {{ object.name }}
 {% endblock %}
 
+{% block add_link %}
+<li>
+<a href="{% url 'company:contact:contact_create' %}">
+    <span class="glyphicon glyphicon-plus"></span>
+  </a>
+</li>
+{% endblock %}
+
+{% block edit_link %}
+<li><a href="{{ object.get_update_url }}">Edit</a></li>
+{% endblock %}
+
 {% block content %}
 <p><a href="{{ object.get_update_url }}">Update</a></p>
 <p>{{ object.location }}</p>
