@@ -34,11 +34,7 @@
       <h1>{% block title %}{% endblock %}</h1>
     </div>
     <div class="col-md-8 col-md-offset-2">
-    {% if request.user.is_authenticated %}
       {% block content %}{% endblock content %}
-    {% else %}
-      {% block login %}{% endblock login %}
-    {% endif %}
     </div>
   </body>
 </html>
