@@ -21,7 +21,6 @@ contacts = patterns('',
 
 urlpatterns = patterns('',
     # Companies
-    url(r'^login/$', views.LoginView.as_view(), name='login'),
     url(r'^positions/', include(positions, namespace='position')),
     url(r'^contacts/', include(contacts, namespace='contact')),
     url(r'^$', CompanyIndex.as_view(), name='company_index'),
