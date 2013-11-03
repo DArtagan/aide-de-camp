@@ -10,7 +10,7 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'Company.user'
         db.add_column(u'companies_company', 'user',
-                      self.gf('django.db.models.fields.related.ForeignKey')(default='', to=orm['auth.User'], unique=True),
+                      self.gf('django.db.models.fields.related.ForeignKey')(default='nobody', to=orm['auth.User'], unique=True),
                       keep_default=False)
 
 
