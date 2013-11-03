@@ -6,6 +6,14 @@
 Positions
 {% endblock %}
 
+{% block add_link %}
+<li>
+<a href="{% url 'company:position:position_create' %}">
+    <span class="glyphicon glyphicon-plus"></span>
+  </a>
+</li>
+{% endblock %}
+
 {% block content %}
 <ul>
   {% for object in object_list %}

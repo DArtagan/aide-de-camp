@@ -6,6 +6,14 @@
 Companies
 {% endblock %}
 
+{% block add_link %}
+<li>
+<a href="{% url 'company:company_create' %}">
+    <span class="glyphicon glyphicon-plus"></span>
+  </a>
+</li>
+{% endblock %}
+
 {% block content %}
 <ul>
   {% for object in object_list %}
