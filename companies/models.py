@@ -1,10 +1,12 @@
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 
 class Company(models.Model):
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=50, blank=True)
     notes = models.TextField(blank=True)
+    user = models.ForeignKey(User, unique=True)
 
     def get_absolute_url(self):
         return reverse('company:company_detail', args=[self.pk])
