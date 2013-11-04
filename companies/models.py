@@ -6,7 +6,7 @@ class Company(models.Model):
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=50, blank=True)
     notes = models.TextField(blank=True)
-    user = models.ForeignKey(User, unique=True)
+    user = models.ForeignKey(User)
 
     def get_absolute_url(self):
         return reverse('company:company_detail', args=[self.pk])

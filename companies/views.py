@@ -5,8 +5,10 @@ from django.template import RequestContext, loader
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView, ListView
-from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
+from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView, ModelFormMixin
+from django.forms import ModelForm
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 
 from companies.models import Company, Contact, Position
 
@@ -22,13 +24,26 @@ class LoginRequiredMixin(object):
     def dispatch(self, *args, **kwargs):
         return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
 
+def ExcludeForm(the_class, *args, **kwargs):
+    class ExcludeUserForm(ModelForm):
+        class Meta:
+            model = the_class
+            exclude = ('user')
+    return ExcludeUserForm
+
 # Companies
 class CompanyMixin(object):
     model = Company
+    form_class = ExcludeForm(Company)
     def get_success_url(self):
-        return reverse('company:company_index', kwargs={'pk': self.object.pk})
+        return reverse('company:company_detail', kwargs={'pk': self.object.pk})
     def get_queryset(self):
-        return Company.objects.all()
+        return Company.objects.filter(user=self.request.user)
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return super(ModelFormMixin, self).form_valid(form)
 
 class CompanyIndex(LoginRequiredMixin, CompanyMixin, ListView):
     template_name = 'company/index.html'
@@ -51,9 +66,9 @@ class CompanyDelete(LoginRequiredMixin, CompanyMixin, DeleteView):
 class ContactMixin(object):
     model = Contact
     def get_success_url(self):
-        return reverse('company:contact:contact_index')
+        return reverse('company:contact:contact_detail', kwargs={'pk': self.object.pk})
     def get_queryset(self):
-        return Contact.objects.all()
+        return Contact.objects.filter(company__user=self.request.user)
 
 class ContactIndex(LoginRequiredMixin, ContactMixin, ListView):
     template_name = 'contact/index.html'
@@ -76,10 +91,9 @@ class ContactDelete(LoginRequiredMixin, ContactMixin, DeleteView):
 class PositionMixin(object):
     model = Position
     def get_success_url(self):
-        #return reverse('company:position:position_update', args=[self.pk])
         return reverse('company:position:position_detail', kwargs={'pk': self.object.pk})
     def get_queryset(self):
-        return Position.objects.all()
+        return Position.objects.filter(company__user=self.request.user)
 
 class PositionIndex(LoginRequiredMixin, PositionMixin, ListView):
     template_name = 'position/index.html'
@@ -97,5 +111,4 @@ class PositionDelete(LoginRequiredMixin, PositionMixin, DeleteView):
     template_name = 'confirm_delete.html'
     def get_success_url(self):
         return reverse('company:position:position_index')
-
 
