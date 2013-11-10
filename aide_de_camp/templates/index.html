@@ -1,23 +1,19 @@
 {% extends 'base.html' %}
 {% load bootstrap3 %}
-{% load include_block %}
 
 {% block content %}
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-9 col-xs-10">
+      <p>- Assisting in the campaign to find a job.</p>
+      <h3>Companies</h3>
+      {% include "company/table.html" with companies=companies only %}
+      <h3>Positions</h3>
+      {% include "position/table.html" with positions=positions only %}
+      <h3>Contacts</h3>
+      {% include "contact/table.html" with contacts=contacts only %}
+      </div>
+    <div class="col-md-3 col-xs-2">
       <img class="img-rounded" src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Napoleon_Division_General_by_Bellange.jpg/490px-Napoleon_Division_General_by_Bellange.jpg" style="width:100%;">
     </div>
-    <div class="col-md-8">
-      <p>- Assisting in the campaign to find a job.</p>
-      <ul>
-        <li><a href="/companies/">Companies</a></li>
-        <li><a href="/companies/contacts/">Contacts</a></li>
-        <li><a href="/companies/positions/">Positions</a></li>
-      </ul>
-    </div>
-    {{ companies }}
-    {{ positions }}
-    {% include_block "company/index.html" "content" %}
-    {% include_block "position/index.html" "content" %}
-  </div>  
+  </div>
 {% endblock %}

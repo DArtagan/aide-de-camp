@@ -1,0 +1,25 @@
+{% if companies %}
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Location</th>
+      <th>Contacts</th>
+      <th>Positions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for object in companies %}
+      <tr>
+        <td><a href="{{ object.get_absolute_url }}">{{ object }}</a></td>
+        <td>{{ object.location }}</td>
+        <td>{{ object.contact_set.all|length }}</td>
+        <td>{{ object.position_set.all|length }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Looks like there aren't any companies yet, <a href="{% url 'company:company_create' %}">create one</a>?</p>
+{% endif %}
+
