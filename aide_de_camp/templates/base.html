@@ -5,7 +5,7 @@
 <html>
   <head>
     {% bootstrap_css %}
-    {% bootstrap_javascript %}
+    {% bootstrap_javascript True %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
@@ -31,6 +31,12 @@
           <ul class="nav navbar-nav navbar-right">
             {% block edit_link %}{% endblock %}
             {% block add_link %}{% endblock %}
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/accounts/logout">Logout</a></li>
+              </ul>
+            </li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
