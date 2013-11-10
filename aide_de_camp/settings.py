@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
+    'guardian',
     'south',
     'bootstrap3',
     'companies',
@@ -189,3 +190,11 @@ STATICFILES_DIRS = (
 
 # Login
 LOGIN_REDIRECT_URL = '/'
+
+# Authentication Backends
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend', # default
+    'guardian.backends.ObjectPermissionBackend',
+)
+
+ANONYMOUS_USER_ID = -1

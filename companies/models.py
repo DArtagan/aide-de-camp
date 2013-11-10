@@ -18,12 +18,13 @@ class Company(models.Model):
         return self.name
 
 class Contact(models.Model):
-    company = models.ManyToManyField(Company, null=True)
+    company = models.ManyToManyField(Company, null=True, blank=True)
     name = models.CharField(max_length=50)
     position = models.CharField(max_length=50, blank=True)
     email = models.EmailField(blank=True)
     phone = models.CharField(max_length=20, blank=True)
     notes = models.TextField(blank=True)
+    user = models.ForeignKey(User, editable=False)
 
     def get_absolute_url(self):
         return reverse('company:contact:contact_detail', args=[self.pk])
