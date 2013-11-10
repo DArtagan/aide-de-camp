@@ -1,8 +1,6 @@
 from django.conf.urls import patterns, url, include
 from companies.views import *
 
-from companies import views
-
 positions = patterns('',
     url(r'^$', PositionIndex.as_view(), name='position_index'),
     url(r'^create/$', PositionCreate.as_view(), name='position_create'),

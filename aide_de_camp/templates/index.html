@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load bootstrap3 %}
+{% load include_block %}
 
 {% block content %}
   <div class="row">
@@ -14,5 +15,7 @@
         <li><a href="/companies/positions/">Positions</a></li>
       </ul>
     </div>
+    {% include_block "company/index.html" "content" %}
+    {% include_block "position/index.html" "content" %}
   </div>  
 {% endblock %}
