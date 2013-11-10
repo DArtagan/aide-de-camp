@@ -23,6 +23,11 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'company:company_index' %}">Companies</a></li>
+            <li><a href="{% url 'company:contact:contact_index' %}">Contacts</a></li>
+            <li><a href="{% url 'company:position:position_index' %}">Positions</a></li>
+          </ul>
           <ul class="nav navbar-nav navbar-right">
             {% block edit_link %}{% endblock %}
             {% block add_link %}{% endblock %}
