@@ -6,6 +6,6 @@
 <form action="." method="POST">
   {% csrf_token %}
   {% bootstrap_form form %}
-  {% buttons submit='OK' reset='Reset' %}{% endbuttons %}
+  <button class="btn btn-primary" type="submit">Ok</button>
 </form>
 {% endblock %}

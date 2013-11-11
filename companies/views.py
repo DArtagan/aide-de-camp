@@ -27,7 +27,7 @@ class CompanyDetail(LoginRequiredMixin, CompanyMixin, DetailView):
     template_name = 'company/detail.html'
 
 class CompanyCreate(LoginRequiredMixin, CompanyMixin, CreateView):
-    template_name = 'company/form.html'
+    template_name = 'create.html'
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -36,12 +36,12 @@ class CompanyCreate(LoginRequiredMixin, CompanyMixin, CreateView):
         return super(ModelFormMixin, self).form_valid(form)
 
 class CompanyUpdate(LoginRequiredMixin, CompanyMixin, UpdateView):
-    template_name = 'company/form.html'
+    template_name = 'update.html'
 
 class CompanyDelete(LoginRequiredMixin, CompanyMixin, DeleteView):
     template_name = 'confirm_delete.html'
     def get_success_url(self):
-        return reverse('company:company:company_index')
+        return reverse('company:company_index')
 
 # Contact
 class ContactMixin(object):
@@ -65,7 +65,7 @@ class ContactDetail(LoginRequiredMixin, ContactMixin, DetailView):
     template_name = 'contact/detail.html'
 
 class ContactCreate(LoginRequiredMixin, ContactMixin, CreateView):
-    template_name = 'contact/form.html'
+    template_name = 'create.html'
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -74,7 +74,7 @@ class ContactCreate(LoginRequiredMixin, ContactMixin, CreateView):
         return super(ModelFormMixin, self).form_valid(form)
 
 class ContactUpdate(LoginRequiredMixin, ContactMixin, UpdateView):
-    template_name = 'contact/form.html'
+    template_name = 'update.html'
 
 class ContactDelete(LoginRequiredMixin, ContactMixin, DeleteView):
     template_name = 'confirm_delete.html'
@@ -103,10 +103,10 @@ class PositionDetail(LoginRequiredMixin, PositionMixin, DetailView):
     template_name = 'position/detail.html'
 
 class PositionCreate(LoginRequiredMixin, PositionMixin, CreateView):
-    template_name = 'position/form.html'
+    template_name = 'create.html'
 
 class PositionUpdate(LoginRequiredMixin, PositionMixin, UpdateView):
-    template_name = 'position/form.html'
+    template_name = 'update.html'
 
 class PositionDelete(LoginRequiredMixin, PositionMixin, DeleteView):
     template_name = 'confirm_delete.html'

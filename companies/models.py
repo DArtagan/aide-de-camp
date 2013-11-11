@@ -14,6 +14,9 @@ class Company(models.Model):
     def get_update_url(self):
         return reverse('company:company_update', args=[self.pk])
 
+    def get_delete_url(self):
+        return reverse('company:company_delete', args=[self.pk])
+
     def __unicode__(self):
         return self.name
 
@@ -31,6 +34,9 @@ class Contact(models.Model):
 
     def get_update_url(self):
         return reverse('company:contact:contact_update', args=[self.pk])
+
+    def get_delete_url(self):
+        return reverse('company:contact:contact_delete', args=[self.pk])
 
     def __unicode__(self):
         return self.name
@@ -57,6 +63,9 @@ class Position(models.Model):
 
     def get_update_url(self):
         return reverse('company:position:position_update', args=[self.pk])
+
+    def get_delete_url(self):
+        return reverse('company:position:position_delete', args=[self.pk])
 
     def __unicode__(self):
         return self.name
