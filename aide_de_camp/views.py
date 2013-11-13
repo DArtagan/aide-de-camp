@@ -12,13 +12,8 @@ from guardian.mixins import LoginRequiredMixin
 
 from companies.models import Company, Contact, Position
 
-# Companies
 class IndexMixin(object):
     model = Company
-
-    # def get_queryset(self):
-    #     trio = {'Company': Company.objects.filter(user=self.request.user), 'Contact': Contact.objects.filter(user=self.request.user), 'Position': Position.objects.filter(company__user=self.request.user),}
-    #     return trio
 
 class Index(LoginRequiredMixin, IndexMixin, ListView):
     template_name = 'index.html'
