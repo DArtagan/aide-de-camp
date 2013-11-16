@@ -5,21 +5,28 @@
 {% endblock %}
 
 {% block add_link %}
-<li>
-<a href="{% url 'company:position:position_create' %}">
-    <span class="glyphicon glyphicon-plus"></span>
-  </a>
-</li>
+  <li>
+    <a href="{% url 'company:position:position_create' %}">
+      <span class="glyphicon glyphicon-plus"></span>
+    </a>
+  </li>
 {% endblock %}
 
 {% block edit_link %}
-<li><a href="{{ object.get_update_url }}">Edit</a></li>
+  <li><a href="{{ object.get_update_url }}">Edit</a></li>
 {% endblock %}
 
 {% block content %}
-<p>{{ object.location }}</p>
-{% if object.notes %}
-<h3>Notes</h3>
-<p>{{ object.notes|linebreaks }}</p>
-{% endif %}
+  <p><a href="{{ object.company.get_absolute_url }}">{{ object.company }}</a> - {{ object.location }}</p>
+  {% if object.start_date %}<p>Start date: {{ object.start_date }}</p>{% endif %}
+  <h3>Application Details</h3>
+  <p>Status: {{ object.apply_status }}</p>
+  <p>Posting ID: {{ object.posting_id }}</p>
+  <p>Portal: {{ object.apply_portal }}</p>
+  <p>Application deadline: {{ object.apply_deadline }}</p>
+  <p>Date applied: {{ object.apply_date }}</p>
+  {% if object.notes %}
+    <h3>Notes</h3>
+    <p>{{ object.notes|linebreaks }}</p>
+  {% endif %}
 {% endblock %}

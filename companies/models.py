@@ -50,11 +50,13 @@ class ApplyStatus(models.Model):
 class Position(models.Model):
     company = models.ForeignKey(Company)
     name = models.CharField(max_length=100)
+    posting_id = models.CharField(max_length=50, blank=True)
     location = models.CharField(max_length=50, blank=True)
     start_date = models.DateField(blank=True, null=True)
     date_noted = models.DateField(auto_now_add=True)
     apply_portal = models.CharField(max_length=500, blank=True)
     apply_deadline = models.DateField(blank=True, null=True)
+    apply_date = models.DateField(blank=True, null=True)
     apply_status =  models.ForeignKey(ApplyStatus, null=True, blank=True)
     notes = models.TextField(blank=True)
 

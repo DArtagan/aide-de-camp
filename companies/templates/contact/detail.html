@@ -1,25 +1,28 @@
 {% extends "base.html" %}
 
 {% block title %}
-{{ object.name }}
+  {{ object.name }}
 {% endblock %}
 
 {% block add_link %}
-<li>
-<a href="{% url 'company:contact:contact_create' %}">
-    <span class="glyphicon glyphicon-plus"></span>
-  </a>
-</li>
+  <li>
+    <a href="{% url 'company:contact:contact_create' %}">
+      <span class="glyphicon glyphicon-plus"></span>
+    </a>
+  </li>
 {% endblock %}
 
 {% block edit_link %}
-<li><a href="{{ object.get_update_url }}">Edit</a></li>
+  <li><a href="{{ object.get_update_url }}">Edit</a></li>
 {% endblock %}
 
 {% block content %}
-<p>{{ object.location }}</p>
-{% if object.notes %}
-<h3>Notes</h3>
-<p>{{ object.notes|linebreaks }}</p>
-{% endif %}
+  <p>{% for company in object.company.all %}{% if not forloop.first %}{% if forloop.last %} and {% else %}, {% endif %}{% endif %}{{ company }}{% endfor %}</p>
+  <p>Position: {{ object.position }}</p>
+  <p>Email: <a href="mailto:{{ object.email }}">{{ object.email }}</a></p>
+  <p>Phone: {{ object.phone }}</p>
+  {% if object.notes %}
+    <h3>Notes</h3>
+    <p>{{ object.notes|linebreaks }}</p>
+  {% endif %}
 {% endblock %}
