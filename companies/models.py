@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Company(models.Model):
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=50, blank=True)
+    website = models.CharField(max_length=500, blank=True)
     notes = models.TextField(blank=True)
     user = models.ForeignKey(User, editable=False)
 
@@ -26,6 +27,7 @@ class Contact(models.Model):
     position = models.CharField(max_length=50, blank=True)
     email = models.EmailField(blank=True)
     phone = models.CharField(max_length=20, blank=True)
+    website = models.CharField(max_length=500, blank=True)
     notes = models.TextField(blank=True)
     user = models.ForeignKey(User, editable=False)
 

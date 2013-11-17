@@ -1,3 +1,5 @@
+{% load contains %}
+
 {% if contacts %}
 <table class="table table-striped table-hover">
   <thead>
@@ -7,6 +9,7 @@
       <th>Position</th>
       <th>Email</th>
       <th>Phone</th>
+      <th>Website</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +20,7 @@
         <td>{{ object.position }}</td>
         <td><a href="mailto:{{ object.email }}">{{ object.email }}</a></td>
         <td>{{ object.phone }}</td>
+        <td>{% if object.website|contains:"http://" %}<a href="{{ object.website }}">{{ object.website }}</a>{% else %}{{ object.website }}{% endif %}</td>
       </tr>
     {% endfor %}
   </tbody>

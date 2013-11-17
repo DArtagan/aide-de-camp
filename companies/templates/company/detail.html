@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load contains %}
+
 {% block title %}
 {{ object.name }}
 {% endblock %}
@@ -18,6 +20,7 @@
 
 {% block content %}
 <p>{{ object.location }}</p>
+<p>{% if object.website|contains:"http://" %}<a href="{{ object.website }}">{{ object.website }}</a>{% else %}{{ object.website }}{% endif %}</p>
 {% if object.notes %}
 <h3>Notes</h3>
 <p>{{ object.notes|linebreaks }}</p>
