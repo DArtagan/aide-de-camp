@@ -1,3 +1,5 @@
+{% load contains %}
+
 {% if positions %}
   <table class="table table-striped table-hover">
     <thead>
@@ -18,7 +20,7 @@
           <td>{{ object.location }}</td>
           <td>{{ object.apply_status }}</td>
           <td>{{ object.apply_deadline }}</td>
-          <td>{{ object.apply_portal }}</td>
+          <td>{% if object.apply_portal|contains:"http://" %}<a href="{{ object.apply_portal }}">{{ object.apply_portal }}</a>{% else %}{{ object.apply_portal }}{% endif %}</td>
         </tr>
       {% endfor %}
     </tbody>

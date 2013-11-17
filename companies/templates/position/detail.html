@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load contains %}
+
 {% block title %}
 {{ object.name }}
 {% endblock %}
@@ -22,7 +24,7 @@
   <h3>Application Details</h3>
   <p>Status: {{ object.apply_status }}</p>
   <p>Posting ID: {{ object.posting_id }}</p>
-  <p>Portal: {{ object.apply_portal }}</p>
+  <p>Portal: {% if object.apply_portal|contains:"http://" %}<a href="{{ object.apply_portal }}">{{ object.apply_portal }}</a>{% else %}{{ object.apply_portal }}{% endif %}</p>
   <p>Application deadline: {{ object.apply_deadline }}</p>
   <p>Date applied: {{ object.apply_date }}</p>
   {% if object.notes %}
