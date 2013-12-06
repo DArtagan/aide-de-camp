@@ -24,6 +24,7 @@ Login
 {% bootstrap_form form %}
 {% buttons submit="Login" %}{% endbuttons %}
 <input type="hidden" name="next" value="{{ next }}" />
+<a href="{% url 'password_reset' %}">Forgot password?</a>
 </form>
 
 {% endblock %}
