@@ -19,5 +19,13 @@
 {% endblock %}
 
 {% block content %}
-<p>{{ object.answer }}</p>
+  <p>{{ object.answer }}</p>
+  {% if object.position_set.all %}
+    <h3>Positions</h3>
+    <ul>
+      {% for position in object.position_set.all %}
+        <li><a href="{{ position.get_absolute_url }}">{{ position }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 {% endblock %}

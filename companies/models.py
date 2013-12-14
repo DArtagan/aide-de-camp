@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
+from questions.models import Question
 
 class Company(models.Model):
     name = models.CharField(max_length=50)
@@ -59,7 +60,8 @@ class Position(models.Model):
     apply_portal = models.CharField(max_length=500, blank=True)
     apply_deadline = models.DateField(blank=True, null=True)
     apply_date = models.DateField(blank=True, null=True)
-    apply_status =  models.ForeignKey(ApplyStatus, null=True, blank=True)
+    apply_status = models.ForeignKey(ApplyStatus, null=True, blank=True)
+    questions = models.ManyToManyField(Question, null=True, blank=True)
     notes = models.TextField(blank=True)
 
     def get_absolute_url(self):
