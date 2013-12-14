@@ -31,7 +31,7 @@
     <h3>Notes</h3>
     <p>{{ object.notes|linebreaks }}</p>
   {% endif %}
-  {% if object.questions %}
+  {% if object.questions.all %}
     <h3>Questions</h3>
     <ul>
       {% for question in object.questions.all %}
