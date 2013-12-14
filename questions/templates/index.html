@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block title %}
+Companies
+{% endblock %}
+
+{% block add_link %}
+<li>
+  <a href="{% url 'company:company_create' %}">
+    <span class="glyphicon glyphicon-plus"></span>
+  </a>
+</li>
+{% endblock %}
+
+{% block content %}
+  {% include "company/table.html" with companies=object_list only %}
+{% endblock %}
