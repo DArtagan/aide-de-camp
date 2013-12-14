@@ -3,17 +3,17 @@
 {% load bootstrap3 %}
 
 {% block title %}
-Companies
+Questions
 {% endblock %}
 
 {% block add_link %}
 <li>
-  <a href="{% url 'company:company_create' %}">
+  <a href="{% url 'question:create' %}">
     <span class="glyphicon glyphicon-plus"></span>
   </a>
 </li>
 {% endblock %}
 
 {% block content %}
-  {% include "company/table.html" with companies=object_list only %}
+  {% include "questions/table.html" with questions=object_list only %}
 {% endblock %}

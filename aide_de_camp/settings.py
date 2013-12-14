@@ -133,6 +133,7 @@ INSTALLED_APPS = (
     'south',
     'bootstrap3',
     'companies',
+    'questions',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

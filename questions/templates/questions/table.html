@@ -1,0 +1,23 @@
+{% load contains %}
+
+{% if questions %}
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Answer</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for object in questions %}
+      <tr>
+        <td><a href="{{ object.get_absolute_url }}">{{ object }}</a></td>
+        <td>{{ object.answer }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Looks like there aren't any questions yet, <a href="{% url 'question:create' %}">create one</a>?</p>
+{% endif %}
+

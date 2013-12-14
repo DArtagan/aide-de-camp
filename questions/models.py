@@ -10,14 +10,14 @@ class Question(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def get_absolute_url(self):
-        return reverse('question_detail', args=[self.pk])
+        return reverse('question:detail', args=[self.pk])
 
     def get_update_url(self):
-        return reverse('question_update', args=[self.pk])
+        return reverse('question:update', args=[self.pk])
 
     def get_delete_url(self):
-        return reverse('question_delete', args=[self.pk])
+        return reverse('question:delete', args=[self.pk])
 
     def __unicode__(self):
-        return self.name
+        return self.question
 
