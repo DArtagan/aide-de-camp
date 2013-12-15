@@ -7,10 +7,12 @@
 {% endblock %}
 
 {% block add_link %}
-  <li>
-    <a href="{% url 'company:position:position_create' %}">
-      <span class="glyphicon glyphicon-plus"></span>
-    </a>
+  <li class="dropdown">
+    <a href="#" class=dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span></a>
+    <ul class="dropdown-menu">
+      <li><a href="{% url 'company:position:position_create' %}">Position</a></li>
+      <li><a href="{% url 'question:create' %}">Question</a></li>
+    </ul>
   </li>
 {% endblock %}
 
