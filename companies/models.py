@@ -1,13 +1,13 @@
 from django.db import models
 from django.core.urlresolvers import reverse
-from django.contrib.auth.models import User
+from django.conf import settings
 
 class Company(models.Model):
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=50, blank=True)
     website = models.CharField(max_length=500, blank=True)
     notes = models.TextField(blank=True)
-    user = models.ForeignKey(User, editable=False)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False)
 
     def get_absolute_url(self):
         return reverse('company:company_detail', args=[self.pk])
@@ -29,7 +29,7 @@ class Contact(models.Model):
     phone = models.CharField(max_length=20, blank=True)
     website = models.CharField(max_length=500, blank=True)
     notes = models.TextField(blank=True)
-    user = models.ForeignKey(User, editable=False)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False)
 
     def get_absolute_url(self):
         return reverse('company:contact:contact_detail', args=[self.pk])
