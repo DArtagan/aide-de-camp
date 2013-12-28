@@ -132,8 +132,10 @@ INSTALLED_APPS = (
     'guardian',
     'south',
     'bootstrap3',
+    'authtools',
     'companies',
     'questions',
+    'accounts',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -200,3 +202,6 @@ AUTHENTICATION_BACKENDS = (
 )
 
 ANONYMOUS_USER_ID = -1
+
+# Django Authtools Settings
+AUTH_USER_MODEL = 'accounts.User'
